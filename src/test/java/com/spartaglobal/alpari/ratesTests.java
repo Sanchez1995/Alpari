@@ -33,4 +33,8 @@ public class ratesTests {
     public void testRateResponse() {
         Assert.assertEquals(4.234904, rates.getRatesValue("AED"), 0);
     }
+    @Test
+    public void testTimeStampValue(){
+        Assert.assertEquals("epoch time", "2018-10-10 03:44:06", rates.getTimeStampValue());
+    }
 }

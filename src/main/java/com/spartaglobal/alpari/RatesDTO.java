@@ -1,11 +1,12 @@
 package com.spartaglobal.alpari;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class RatesDTO {
 
@@ -20,6 +21,7 @@ public class RatesDTO {
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
+
     }
 
     public void printRate() {
@@ -34,15 +36,21 @@ public class RatesDTO {
         return (String) fullRatesFile.get("base");
     }
 
-    public long getTimeStamp() {
-        return (long) fullRatesFile.get("timestamp");
+    public JSONObject getRatesList() {
+        return (JSONObject) fullRatesFile.get("rates");
     }
 
     public double getRatesValue(String rate) {
         return (double) getRatesList().get(rate);//array called rates
     }
 
-    public JSONObject getRatesList() {
-        return (JSONObject) fullRatesFile.get("rates");
+    public long getTimeStamp() {
+        return (long) fullRatesFile.get("timestamp");
+    }
+
+    public String getTimeStampValue() {
+        Date date = new Date(getTimeStamp() * 1000l);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        return sdf.format(date);
     }
 }
