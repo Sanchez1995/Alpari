@@ -34,6 +34,7 @@ public class ratesTests {
 
     @Test
     public void testRateResponse(){
+        Assert.assertEquals(4.234904,rates.getRatesValue("AED"), 0);
 
     }
 
