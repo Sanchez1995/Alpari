@@ -7,6 +7,7 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Set;
 
 public class RatesDTO {
 
@@ -52,5 +53,13 @@ public class RatesDTO {
         Date date = new Date(getTimeStamp() * 1000l);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         return sdf.format(date);
+    }
+
+    public Set getRatesKey(){
+        return getRatesList().keySet();
+    }
+
+    public Set getRatesValueSet(){
+        return getRatesList().entrySet();
     }
 }
